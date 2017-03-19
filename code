@@ -1,0 +1,27 @@
+#include <Adafruit_CircuitPlayground.h>
+#include "pitches.h"
+
+int pin1;
+int capThreshold = 5000;
+
+int pin3;
+int capThreshold_pin3 = 5000;
+
+void setup() {
+  Serial.begin(9600);
+  CircuitPlayground.begin();
+}
+
+void loop() {
+  pin1 = CircuitPlayground.readCap(1);
+  if (pin1 > capThreshold){
+    CircuitPlayground.playTone(pin1, 30);
+  Serial.println(pin1);
+  }
+  pin3 = CircuitPlayground.readCap(3);
+  if (pin3 > capThreshold_pin3){
+    CircuitPlayground.playTone(pin3, NOTE_B2);
+  Serial.println(pin3);  
+  }
+  delay(170);
+}
